@@ -1,15 +1,13 @@
 "use strict";
 
-import { Response, Request, NextFunction } from "express";
-import { UserDocument } from "../models/User";
-
+import { Response, Request } from "express";
+import { Order } from "../models/Order";
 
 /**
- * Facebook API example.
- * @route GET /api/facebook
+ * Get Orders
+ * @route GET /orders
  */
-export const getOrder = (req: Request, res: Response) => {
-    const user = req.user as UserDocument;
-    const token = user.tokens.find((token: any) => token.kind === "facebook");
-    res.json(user);
+export const getOrders = (req: Request, res: Response) => {
+    const order = new Order(10);
+    res.json([order]);
 };
